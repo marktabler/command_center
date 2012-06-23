@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  ferret_type: MyString
+  instruction: MyString
+  last_run: 2012-06-22 21:09:57
+
+two:
+  user_id: 1
+  ferret_type: MyString
+  instruction: MyString
+  last_run: 2012-06-22 21:09:57
