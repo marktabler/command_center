@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623233110) do
+ActiveRecord::Schema.define(:version => 20120626225446) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "instruction_id"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20120623233110) do
     t.datetime "last_run",    :default => '2012-01-01 00:00:00'
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+  end
+
+  create_table "reports", :force => true do |t|
+    t.text     "body"
+    t.string   "subject"
+    t.datetime "sent_at"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
