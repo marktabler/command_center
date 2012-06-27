@@ -1,0 +1,24 @@
+<%= form_for instruction do |f| %>
+  <%= field_set_tag 'Stock Ferret' do %>
+    <%= f.hidden_field :ferret_type, value: "StockFerret" %>
+    <%= f.fields_for :params do |params_form| %>
+      <%= params_form.label :symbol, "Stock Symbol" %>
+      <%= params_form.text_field :symbol, size: 7 %>
+      <br />
+      <%= params_form.label :instruction, "Percent Change or Value" %>
+      <br />
+      <%= params_form.radio_button :instruction, "Change" %>
+      <%= label :instruction_change, "Change" %>
+      <%= params_form.radio_button :instruction, "Value" %>
+      <%= label :instruction_value, "Value" %>
+      <br />
+      <%= params_form.label :high_threshold, "High Threshold" %>
+      <%= params_form.text_field :high_threshold, size: 3 %>
+      <br />
+      <%= params_form.label :low_threshold, "Low Threshold" %>
+      <%= params_form.text_field :low_threshold, size: 3 %>
+    <% end %>
+    <br />
+    <%= f.submit %>
+  <% end %>
+<% end %>

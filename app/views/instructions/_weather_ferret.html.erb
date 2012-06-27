@@ -1,0 +1,20 @@
+<%= form_for instruction do |f| %>
+  <%= field_set_tag 'Weather Ferret' do %>
+    <%= f.hidden_field :ferret_type, value: "WeatherFerret" %>
+    <%= f.fields_for :params do |params_form| %>
+      <%= params_form.label :zip, "Watch weather in this zip code" %>
+      <%= params_form.text_field :zip, size: 7 %>
+      <br />
+      <%= params_form.label :term, "Watch for conditions including" %>
+      <%= params_form.text_field :term, size: 7 %>
+      <br />
+      <%= params_form.label :high_threshold, "Watch for highs above" %>
+      <%= params_form.text_field :high_threshold, size: 3 %>
+      <br />
+      <%= params_form.label :low_threshold, "Watch for lows below" %>
+      <%= params_form.text_field :low_threshold, size: 3 %>
+    <% end %>
+    <br />
+    <%= f.submit %>
+  <% end %>
+<% end %>

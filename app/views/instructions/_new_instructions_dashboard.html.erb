@@ -1,0 +1,5 @@
+<% KNOWN_FERRETS.each do |ferret| %>
+
+  <%= render partial: ferret.underscore, locals: {instruction: Instruction.new} %>
+<% end %>
+

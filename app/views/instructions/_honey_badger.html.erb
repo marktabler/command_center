@@ -1,0 +1,14 @@
+<%= form_for instruction do |f| %>
+  <%= field_set_tag 'The Honey Badger' do %>
+    <%= f.hidden_field :ferret_type, value: "HoneyBadger" %>
+    <%= f.fields_for :params do |params_form| %>
+      <%= params_form.label :term, "Look for this phrase" %>
+      <%= params_form.text_field :term, size: 15 %>
+      <br />
+      <%= params_form.label :url, "On this website" %>
+      <%= params_form.text_field :url, size: 30 %>
+    <% end %>
+    <br />
+    <%= f.submit %>
+  <% end %>
+<% end %>
