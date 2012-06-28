@@ -5,20 +5,20 @@
     <%= f.hidden_field :ferret_type, value: "StockFerret" %>
     <%= f.fields_for :params do |params_form| %>
       <%= params_form.label :symbol, "Stock Symbol" %>
-      <%= params_form.text_field :symbol, size: 7, value: @p["symbol"] %>
+      <%= params_form.text_field :symbol, size: 7, value: @p["symbol"], class: "span2" %>
       <br />
-      <%= params_form.label :instruction, "Percent Change or Value" %>
-      <br />
-      <%= params_form.radio_button :instruction, "Change", checked: @p["instruction"] == "Change" %>
-      <%= label :instruction_change, "Change" %>
-      <%= params_form.radio_button :instruction, "Value", checked: @p["instruction"] == "Value" %>
-      <%= label :instruction_value, "Value" %>
-      <br />
+      <div class="instruction">
+        <%= params_form.label :instruction, "Percent Change or Value" %>
+        <%= params_form.radio_button :instruction, "Change", checked: @p["instruction"] == "Change", class: "inline" %>
+        <%= label :instruction_change, "Change", class: "inline" %>
+        <%= params_form.radio_button :instruction, "Value", checked: @p["instruction"] == "Value", class: "inline" %>
+        <%= label :instruction_value, "Value", class: "inline" %>
+      </div>
       <%= params_form.label :high_threshold, "High Threshold" %>
-      <%= params_form.text_field :high_threshold, size: 4, value: @p["high_threshold"] %>
+      <%= params_form.text_field :high_threshold, size: 4, value: @p["high_threshold"], class: "span2" %>
       <br />
       <%= params_form.label :low_threshold, "Low Threshold" %>
-      <%= params_form.text_field :low_threshold, size: 4, value: @p["low_threshold"] %>
+      <%= params_form.text_field :low_threshold, size: 4, value: @p["low_threshold"], class: "span2" %>
     <% end %>
     <br />
     <%= f.submit %>

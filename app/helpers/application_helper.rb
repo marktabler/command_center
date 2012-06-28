@@ -2,9 +2,9 @@ module ApplicationHelper
 
   def salutation
     if current_user
-      "Welcome, #{current_user.name}"
+      "<li><a href='#' class='pull-right'>Welcome, #{current_user.name}</a></li>".html_safe
     else
-      "Welcome, Guest"
+      "<li>Welcome, Guest</li>".html_safe
     end
   end
 

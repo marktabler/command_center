@@ -5,10 +5,10 @@
     <%= f.hidden_field :ferret_type, value: "HoneyBadger" %>
     <%= f.fields_for :params do |params_form| %>
       <%= params_form.label :term, "Look for this phrase" %>
-      <%= params_form.text_field :term, size: 15, value: @p["term"] %>
+      <%= params_form.text_field :term, size: 15, value: @p["term"], class: "span2" %>
       <br />
       <%= params_form.label :url, "On this website" %>
-      <%= params_form.text_field :url, size: 30, value: @p["url"] || "http://" %>
+      <%= params_form.text_field :url, size: 30, value: @p["url"] || "http://", class: "span2" %>
     <% end %>
     <br />
     <%= f.submit %>
