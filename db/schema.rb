@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20120626234305) do
   create_table "alerts", :force => true do |t|
     t.integer  "instruction_id"
     t.integer  "user_id"
+    t.integer  "report_id"
     t.string   "body"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false

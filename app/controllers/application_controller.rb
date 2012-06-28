@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  DEV_MODE = true
   protect_from_forgery
 
   def login_required
@@ -13,7 +14,11 @@ class ApplicationController < ActionController::Base
   helper_method :login_path
 
   def current_user
-    User.find_by_uid(session["uid"]) rescue nil
+    if DEV_MODE
+      User.first
+    else
+      User.find_by_uid(session["uid"]) rescue nil
+    end
   end
   helper_method :current_user
 end

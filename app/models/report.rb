@@ -4,9 +4,11 @@ class Report < ActiveRecord::Base
   has_many :alerts
 
   def self.build_with_alerts(alerts)
+    report = Report.create
     alerts.each do |alert|
-      alert.update_attribute(:report_id, id)
+      alert.update_attribute(:report_id, report.id)
     end
+    report
   end
 
   def send_email

@@ -23,4 +23,15 @@ module ApplicationHelper
     end
   end
 
+  def report_links
+    
+    if current_user
+      links = [link_to("My Reports", reports_path)]
+      if current_user.latest_report
+        links << link_to("My Latest Report", current_user.latest_report)
+      end
+      links.join(" ").html_safe
+    end
+  end
+
 end

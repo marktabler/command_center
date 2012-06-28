@@ -10,7 +10,13 @@ class InstructionsController < ApplicationController
 	end
 
   def new
-    
+
   end
 	
+  def update
+    @instruction = current_user.instructions.find(params[:id])
+    @instruction.update_attributes(params[:instruction])
+    return redirect_to action: :index
+  end
+
 end

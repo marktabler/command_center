@@ -8,6 +8,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-
+    @report = current_user.reports.find(params[:id])
+    @alerts = @report.alerts
   end
 end
