@@ -6,7 +6,7 @@ class InstructionsController < ApplicationController
 	end
 
 	def create
-		Instruction.create(params[:instruction])
+		current_user.instructions.create(params[:instruction])
 	end
 
   def new
