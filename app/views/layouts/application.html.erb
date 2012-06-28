@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand">Ferrety</a>
+      <ul class="nav">
+        <%= instruction_links %>
+        <%= report_links %>
+        <li><%= session_controls %></li>    
+    </div>
+  </div>
+</div>
 <%= render partial: 'layouts/top_banner' %>
 <%= yield %>
 
