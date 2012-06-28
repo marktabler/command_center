@@ -16,8 +16,11 @@ module ApplicationHelper
     end
   end
 
-  def instruction_link
-
+  def instruction_links
+    if current_user
+      [link_to("My Instructions", instructions_path),
+      link_to("New Instructions", new_instruction_path)].join(" ").html_safe
+    end
   end
 
 end

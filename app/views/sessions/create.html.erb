@@ -1,1 +1,4 @@
-<%= request.env['omniauth.auth'].inspect %>
+<%= request.env['omniauth.auth']['extra']['raw_info'] %>
+
+<br>
+<%= current_user.inspect %>

@@ -1,1 +1,3 @@
-<%= render partial: 'new_instructions_dashboard' %>
+<% @instructions.each do |instruction| %>
+  <%= render partial: instruction.ferret_type.underscore, locals: {instruction: instruction} %>
+<% end %>
