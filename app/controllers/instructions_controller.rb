@@ -19,4 +19,15 @@ class InstructionsController < ApplicationController
     return redirect_to action: :index
   end
 
+  def runnable
+    if params[:pw] == INTERNAL_PASSWORD
+      @instructions = Instruction.runnable
+      respond_to do |format|
+        format.json {render :json => @instructions}
+      end
+    else
+      return render nothing: true, status: 403
+    end
+  end
+
 end

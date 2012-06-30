@@ -4,4 +4,8 @@ class Instruction < ActiveRecord::Base
   belongs_to :user
   
   serialize :params, JSON
+
+  def self.runnable
+    where "last_run < ?", DateTime.now - 4.hours
+  end
 end
