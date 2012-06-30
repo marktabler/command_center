@@ -3,8 +3,8 @@ class AlertsController < ApplicationController
 
   def create
     if params[:pw] == INTERNAL_PASSWORD
-      puts "Success on params #{params["alert"]}"
-      render text: params["alert"].inspect
+      @instruction = Instruction.find(params["alert"]["instruction_id"])
+      @instruction.create_alert(params["alert"]["body"])
     else
       return render nothing: true, status: 403
     end

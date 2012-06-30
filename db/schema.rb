@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(:version => 20120626234305) do
     t.integer  "user_id"
     t.integer  "report_id"
     t.string   "body"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.boolean  "published",      :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "instructions", :force => true do |t|

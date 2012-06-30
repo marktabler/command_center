@@ -2,7 +2,6 @@ class CreateAlerts < ActiveRecord::Migration
   def change
     create_table :alerts do |t|
       t.integer :instruction_id
-      t.integer :user_id
       t.integer :report_id
       t.string :body
       t.timestamps

@@ -1,13 +1,10 @@
 class Alert < ActiveRecord::Base
-  attr_accessible :body, :instruction_id
+  attr_accessible :body, :instruction_id, :published, :report_id
   belongs_to :report
-  belongs_to :user
+  belongs_to :instruction
 
   def self.unpublished
     where report_id: nil
   end
 
-  def published?
-    !!report_id
-  end
 end

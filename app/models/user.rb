@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   has_many :reports
   has_many :instructions
-  has_many :alerts
 
   def name
     "#{first_name} #{last_name}"
@@ -13,14 +12,17 @@ class User < ActiveRecord::Base
     reports.order("sent_at DESC").first
   end
 
-  def make_report
-    if alerts.unpublished.any?
-      reports.build_with_alerts(alerts.unpublished)
-    end
+  def alerts
+    Alert.where("instruction_id in(?)", instructions.pluck(:id))
   end
 
-  def make_and_send_report
-    report = make_report
-    report.send_email if report
+  def has_publishable_alerts?
+    alerts.unpublished.any?
+  end
+
+  def generate_report
+    if has_publishable_alerts?
+      Report.build_for_user(self)
+    end
   end
 end
