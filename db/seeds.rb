@@ -11,8 +11,8 @@ stock_instruction = user.instructions.create!(ferret_type: "StockFerret", params
 weather_instruction = user.instructions.create!(ferret_type: "WeatherFerret", params: {term: "storm", low_threshold: 50, high_threshold: 90, zip: '97086'})
 honeybadger_instruction = user.instructions.create!(ferret_type: "HoneyBadger", params: {url: "http://www.hungryacademy.com/", term: "hungry"})
 
-  alert = user.alerts.create(body: "Sample stock alert! Buy Buy Buy!")
-  alert2 = user.alerts.create(body: "It's hot in Topeka")
-  alert3 = user.alerts.create(body: "I'm a honey badger.")
+  alert = stock_instruction.alerts.create(body: "Sample stock alert! Buy Buy Buy!")
+  alert2 = weather_instruction.alerts.create(body: "It's hot in Topeka")
+  alert3 = honeybadger_instruction.alerts.create(body: "I'm a honey badger.")
 
-  user.reports.build_with_alerts([alert, alert2, alert3])
+  user.generate_report

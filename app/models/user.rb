@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
     Alert.where("instruction_id in(?)", instructions.pluck(:id))
   end
 
-  def has_publishable_alerts?
-    alerts.unpublished.any?
+  def unpublished_alerts
+    alerts.unpublished
   end
 
   def generate_report
-    if has_publishable_alerts?
+    if unpublished_alerts.any?
       Report.build_for_user(self)
     end
   end

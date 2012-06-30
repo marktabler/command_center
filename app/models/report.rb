@@ -4,13 +4,11 @@ class Report < ActiveRecord::Base
   has_many :alerts
 
   def self.build_for_user(user)
-    alerts = user.alerts.unpublished
     report = Report.create(user_id: user.id)
-    alerts.each do |alert|
+    user.unpublished_alerts.each do |alert|
       alert.update_attribute(:report_id, report.id)
     end
-    send_email
-    report
+    report.send_email
   end
 
   def send_email
