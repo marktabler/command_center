@@ -7,5 +7,6 @@ CommandCenter::Application.routes.draw do
   resources :instructions
   resources :reports
   resource :session
+  resources :alerts, only: :create
 
 end
