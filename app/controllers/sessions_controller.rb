@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
                                last_name: u["last_name"],
                                email: u["email"])
     session["uid"] = u["id"]
+    return redirect_to 'http://ferrety.net'
   end  
 
   def destroy

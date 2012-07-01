@@ -6,7 +6,7 @@
 APPLICATION_NAME = "CommandCenter"
 SCRIPT_NAME = "command_center"
 REPOSITORY = "git://github.com/marktabler/command_center.git"
-START_COMMAND = "unicorn /apps/#{APPLICATION_NAME}/current/config.ru -p 3010"
+START_COMMAND = "cd /apps/#{APPLICATION_NAME}/current/ \\\&\\\& bundle exec unicorn /apps/#{APPLICATION_NAME}/current/config.ru -p 3010"
 SERVER = "fallingfoundry.com"
 
 
@@ -77,6 +77,6 @@ namespace :deploy do
   before "deploy", "deploy:create_god_script"
   after "deploy", "deploy:bundle"
   after "deploy", "deploy:db_migrate"
-  after "deploy", "deploy:precompile_assets"
+  #after "deploy", "deploy:precompile_assets"
   after "deploy", "deploy:restart"
 end
