@@ -1,5 +1,5 @@
 class InstructionsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, except: :runnable
 
 	def index
     @instructions = current_user.instructions
