@@ -42,7 +42,7 @@ namespace :deploy do
   task :create_god_script do
     run %^cd /apps/god_scripts && touch #{SCRIPT_NAME}.rb && rm #{SCRIPT_NAME}.rb && touch #{SCRIPT_NAME}.rb^
     run %^echo God.watch do \\\|w\\\| >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
-    run %^echo w.log = \\\"/#{SCRIPT_NAME}.log\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
+    run %^echo w.log = \\\"/apps/logs/#{SCRIPT_NAME}.log\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
     run %^echo w.name = \\\"#{SCRIPT_NAME}\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
     run %^echo w.start = \\\"#{START_COMMAND}\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
     run %^echo w.keepalive >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
@@ -68,11 +68,15 @@ namespace :deploy do
   task :db_migrate do
     run "cd /apps/#{application}/current && rake db:create && rake db:migrate"
   end
+  task :precompile_assets do
+    run "cd /apps/#{application}/current && rake assets:precompile" 
+  end
   before "deploy:start", "deploy:ensure_god_running"
   before "deploy:stop", "deploy:ensure_god_running"
   before "deploy", "deploy:mkdirs"
   before "deploy", "deploy:create_god_script"
-  after "deploy", "deploy:db_migrate"
   after "deploy", "deploy:bundle"
-  after "deploy", "deploy:start"
+  after "deploy", "deploy:db_migrate"
+  after "deploy", "deploy:precompile_assets"
+  after "deploy", "deploy:restart"
 end
