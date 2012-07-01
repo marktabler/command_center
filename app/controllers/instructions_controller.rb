@@ -7,6 +7,7 @@ class InstructionsController < ApplicationController
 
 	def create
 		current_user.instructions.create(params[:instruction])
+    return redirect_to instructions_path
 	end
 
   def new
