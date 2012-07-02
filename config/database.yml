@@ -32,4 +32,4 @@ production:
   database: ferrety_production
   hostname: localhost
   username: root
-  password: databucket2
+  password:
