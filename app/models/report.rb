@@ -12,6 +12,7 @@ class Report < ActiveRecord::Base
   end
 
   def send_email
+    Notifier.report(self).deliver
     update_attribute(:sent_at, DateTime.now)
   end
 

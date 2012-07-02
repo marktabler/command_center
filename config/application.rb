@@ -15,6 +15,20 @@ module CommandCenter
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+
+    # Dear code reviewer,
+    # I recognize that it's bad practice to check in username and password data
+    # 
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => 'ferrety.net',
+      :user_name            => 'ferrety.clerk',
+      :password             => ENV['FERRETY_GMAIL_PASSWORD'],
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  }
+
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
