@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   has_many :reports
   has_many :instructions
 
+  def self.generate_reports
+    all.each do |user|
+      user.generate_report rescue puts "Error generating report for #{user.id}"
+    end
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
