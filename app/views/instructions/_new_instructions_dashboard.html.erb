@@ -1,5 +1,16 @@
-<% KNOWN_FERRETS.each do |ferret| %>
+<div class="row">
+  <div class="span8">
+    <div class="row">
 
-  <%= render partial: ferret.underscore, locals: {instruction: Instruction.new} %>
-<% end %>
+      <% KNOWN_FERRETS.each do |ferret| %>
+        <div class="span2 ferret">
+        <%= render partial: ferret.underscore, locals: {instruction: Instruction.new} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
+  <div class="span4 smallferret">
+    &nbsp;
+  </div>
+</div>
