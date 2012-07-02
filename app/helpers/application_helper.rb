@@ -4,7 +4,7 @@ module ApplicationHelper
     if current_user
       "<li><a href='#' class='pull-right'>Welcome, #{current_user.name}</a></li>".html_safe
     else
-      "<li>Welcome, Guest</li>".html_safe
+      "<li><a href='#' class='pull-right'>Welcome, Guest</a></li>".html_safe
     end
   end
 
@@ -12,7 +12,7 @@ module ApplicationHelper
     if current_user
       content_tag(:li, link_to("Sign Out", session_path, method: :delete)).html_safe
     else
-      content_tag(:li, link_to("Sign In", login_path)).html_safe
+      content_tag(:li, link_to("Sign In With Facebook", login_path)).html_safe
     end
   end
 
