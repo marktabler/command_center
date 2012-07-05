@@ -13,6 +13,12 @@ class InstructionsController < ApplicationController
   def new
 
   end
+
+  def destroy
+    @instruction = Instruction.find(params[:id])
+    @instruction.destroy
+    return redirect_to instructions_path
+  end
 	
   def update
     @instruction = current_user.instructions.find(params[:id])

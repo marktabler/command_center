@@ -9,5 +9,5 @@ CommandCenter::Application.routes.draw do
   resources :reports
   resource :session
   resources :alerts, only: :create
-
+  resources :users, only: :destroy
 end

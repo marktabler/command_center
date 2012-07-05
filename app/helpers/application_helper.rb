@@ -33,4 +33,10 @@ module ApplicationHelper
     end
   end
 
+  def account_controls
+    if current_user
+      content_tag(:li, link_to("Cancel Account", user_path(current_user), method: :delete, confirm: "This will destroy all instructions and reports associated with your account. Continue?"))
+    end
+  end
+
 end

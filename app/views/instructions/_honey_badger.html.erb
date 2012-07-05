@@ -1,3 +1,4 @@
+<% show_delete = defined?(delete_option) %>
 <% @p = instruction.params || {} %>
 
 <%= form_for instruction do |f| %>
@@ -12,5 +13,8 @@
     <% end %>
     <br />
     <%= f.submit %>
+    <% if show_delete%>
+    <%= button_to "Cancel Instruction", instruction_path(instruction), method: :delete, confirm: "Are you sure you wish to cancel this instruction?" %>
+    <% end %>
   <% end %>
 <% end %>

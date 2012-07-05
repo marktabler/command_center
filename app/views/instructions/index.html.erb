@@ -3,7 +3,7 @@
     <div class="row">
       <% @instructions.each do |instruction| %>
         <div class="span2 ferret">
-          <%= render partial: instruction.ferret_type.underscore, locals: {instruction: instruction} %>
+          <%= render partial: instruction.ferret_type.underscore, locals: {instruction: instruction, delete_option: true} %>
         </div>
       <% end %>
     </div>

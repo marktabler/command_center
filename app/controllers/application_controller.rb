@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   #DEV_MODE = Rails.env == "development" ? true : false
-  DEV_MODE = false
+  DEV_MODE = true
   protect_from_forgery
 
   def login_required
