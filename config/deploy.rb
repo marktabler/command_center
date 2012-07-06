@@ -6,7 +6,7 @@
 APPLICATION_NAME = "CommandCenter"
 SCRIPT_NAME = "command_center"
 REPOSITORY = "git://github.com/marktabler/command_center.git"
-START_COMMAND = "cd /apps/#{APPLICATION_NAME}/current/ \\\&\\\& bundle exec unicorn /apps/#{APPLICATION_NAME}/current/config.ru -p 3010"
+START_COMMAND = "bundle exec unicorn -p 3010"
 SERVER = "fallingfoundry.com"
 LAUNCH_DIRECTORY = "/apps/#{APPLICATION_NAME}/current"
 ENVIRONMENT_VARIABLES = '{}'
