@@ -8,7 +8,8 @@ SCRIPT_NAME = "command_center"
 REPOSITORY = "git://github.com/marktabler/command_center.git"
 START_COMMAND = "cd /apps/#{APPLICATION_NAME}/current/ \\\&\\\& bundle exec unicorn /apps/#{APPLICATION_NAME}/current/config.ru -p 3010"
 SERVER = "fallingfoundry.com"
-
+LAUNCH_DIRECTORY = "/apps/#{APPLICATION_NAME}/current"
+ENVIRONMENT_VARIABLES = '{}'
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require 'rvm/capistrano'
@@ -42,8 +43,10 @@ namespace :deploy do
   task :create_god_script do
     run %^cd /apps/god_scripts && touch #{SCRIPT_NAME}.rb && rm #{SCRIPT_NAME}.rb && touch #{SCRIPT_NAME}.rb^
     run %^echo God.watch do \\\|w\\\| >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
-    run %^echo w.log = \\\"/apps/logs/#{SCRIPT_NAME}.log\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
+    run %^echo w.log = \\\"apps/logs/#{SCRIPT_NAME}.log\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
     run %^echo w.name = \\\"#{SCRIPT_NAME}\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
+    run %^echo w.dir = \\\"#{LAUNCH_DIRECTORY}\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
+    run %^echo w.env = \\\"#{ENVIRONMENT_VARIABLES}\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
     run %^echo w.start = \\\"#{START_COMMAND}\\\" >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
     run %^echo w.keepalive >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
     run %^echo end >> /apps/god_scripts/#{SCRIPT_NAME}.rb^
